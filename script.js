@@ -1,3 +1,4 @@
+// Create grid
 const container = document.querySelector(".container");
 
 let rowsNumber = prompt("How many rows to set (from 2 to 100?");
@@ -15,10 +16,31 @@ for(let row = 0; row < (rowsNumber); row++){
     container.appendChild(row);
     for(let cell = 0; cell < rowsNumber; cell++){
         const cell = document.createElement("div")
-        // cell.innerHTML = "div";
         cell.className = "cell";
         row.appendChild(cell);
     }
 }
 
-console.log(rowsNumber);
+
+// Track mouse button status
+let isMouseDown = false;
+
+// Handle mouse button down
+container.addEventListener("mousedown", function(event) {
+    if (event.target.classList.contains("cell")) {
+        isMouseDown = true;
+        event.target.style.backgroundColor = "orange";
+    }
+});
+
+// Handle mouse button up
+container.addEventListener("mouseup", function() {
+    isMouseDown = false;
+});
+
+// Handle mouseover for dragging
+container.addEventListener("mouseover", function(event) {
+    if (isMouseDown && event.target.classList.contains("cell")) {
+        event.target.style.backgroundColor = "orange";
+    }
+});
