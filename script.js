@@ -29,7 +29,11 @@ let isMouseDown = false;
 container.addEventListener("mousedown", function(event) {
     if (event.target.classList.contains("cell")) {
         isMouseDown = true;
-        event.target.style.backgroundColor = "orange";
+        if (event.target.style.backgroundColor === "orange"){
+            event.target.style.backgroundColor = "white";
+        } else {
+            event.target.style.backgroundColor = "orange";
+        }
     }
 });
 
@@ -41,6 +45,10 @@ container.addEventListener("mouseup", function() {
 // Handle mouseover for dragging
 container.addEventListener("mouseover", function(event) {
     if (isMouseDown && event.target.classList.contains("cell")) {
-        event.target.style.backgroundColor = "orange";
+        if (event.target.style.backgroundColor === "orange"){
+            event.target.style.backgroundColor = "white";
+        } else {
+            event.target.style.backgroundColor = "orange";
+        }
     }
 });
